@@ -6,6 +6,7 @@ from web3.contract import ConciseContract
 
 from helper import deploy_contract
 
+# Compile the modified version of PoWH3D that allows early whales
 contract_source_code = open('powh3d.sol', 'r').read()
 compiled_sol = compile_source(contract_source_code) # Compiled source code
 
@@ -29,7 +30,7 @@ Hourglass.withdraw(transact={'from': my_account})
 
 final_eth_balance = w3.eth.getBalance(my_account)
 
-print('Change in ETH own balance:', (final_eth_balance-initial_eth_balance)*1e-18)
+print('Change in own ETH balance:', (final_eth_balance-initial_eth_balance)*1e-18)
 print('P3D balance:', Hourglass.balanceOf(my_account)*1e-18)
 print('Contract ETH balance:', Hourglass.totalEthereumBalance()*1e-18)
 print('Contract P3D supply:', Hourglass.totalSupply()*1e-18)
